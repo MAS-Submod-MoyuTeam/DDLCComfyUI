@@ -35,7 +35,7 @@ init -999 python in comfy_ui:
     Image.__new__ = staticmethod(monkey_new)
 
     # HACK: monkey patch for dynamic image path interpolation
-    def monkey_dynamic_image(d, scope = None, prefix = None):
+    def monkey_dynamic_image(d, scope = None, prefix = None, **args):
         if not isinstance(d, list):
             d = [d]
 
