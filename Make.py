@@ -355,7 +355,7 @@ if __name__ == "__main__":
     ap.add_argument("-t", "--target",
                     type = str,
                     choices = ["ddlc", "mas"],
-                    default = "ddlc",
+                    default = "mas",
                     help = "set target")
     ap.add_argument("-r", "--release",
                     action = "store_true",

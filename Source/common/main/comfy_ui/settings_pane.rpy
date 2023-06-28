@@ -33,10 +33,10 @@ screen comfy_ui_settings_pane(apply_label, disable_label):
                 hbox:
                     xfill True
 
-                    label _("Theme: [theme_name]"):
+                    label _("风格: [theme_name]"):
                         style "slider_label"
 
-                    textbutton _("Preview"):
+                    textbutton _("预览"):
                         style "check_button"
                         xalign 1.0
                         ypos 15
@@ -53,15 +53,15 @@ screen comfy_ui_settings_pane(apply_label, disable_label):
                 grid 3 1:
                     xfill True
 
-                    textbutton _("Fonts"):
+                    textbutton _("字体"):
                         style "check_button"
                         action ToggleDict(comfy_ui.theme_mgr.settings, "use_fonts")
 
-                    textbutton _("Layout"):
+                    textbutton _("布局"):
                         style "check_button"
                         action ToggleDict(comfy_ui.theme_mgr.settings, "use_layout")
 
-                    textbutton _("HiDPI"):
+                    textbutton _("高DPI"):
                         style "check_button"
                         action ToggleDict(comfy_ui.theme_mgr.settings, "use_hidpi")
 
@@ -74,12 +74,12 @@ screen comfy_ui_settings_pane(apply_label, disable_label):
                     $ apply_glitched = renpy.random.random() < glitch_chance
                     $ apply_name = _("Apply") if not apply_glitched else glitchtext(10)
                     $ apply_width = 100 if not apply_glitched else 150
-                    $ apply_action = Show(screen = "dialog", message = "The game will be restarted.", ok_action = Jump(apply_label))
+                    $ apply_action = Show(screen = "dialog", message = "游戏将自动关闭，请手动重启", ok_action = Jump(apply_label))
 
                     $ disable_glitched = renpy.random.random() < glitch_chance
                     $ disable_name = _("Disable") if not disable_glitched else glitchtext(10)
                     $ disable_width = 100 if not disable_glitched else 150
-                    $ disable_action = Show(screen = "dialog", message = "The game will be restarted.", ok_action = Jump(disable_label))
+                    $ disable_action = Show(screen = "dialog", message = "游戏将自动关闭，请手动重启", ok_action = Jump(disable_label))
 
                     textbutton apply_name:
                         style "navigation_button"
@@ -97,4 +97,4 @@ screen comfy_ui_settings_pane(apply_label, disable_label):
                     ypos 20
 
     else:
-        label _("No themes available.")
+        label _("没有任何风格可用.")
