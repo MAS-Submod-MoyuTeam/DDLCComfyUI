@@ -1,6 +1,7 @@
 # DDLC Comfy UI
 <img src="Logo.png?raw=true">
 
+[简体中文](README_zhCN.md)
 ---
 Hey, I'm no writer, so just skip to the **Features** section, okay?
 
