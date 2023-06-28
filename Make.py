@@ -5,6 +5,7 @@
 # See LICENSE file for the licensing information
 #
 ################################################################################
+INKSCAPE_BIN = "C:\Program Files\Inkscape\\bin\inkscape.exe"
 import itertools
 import json
 import re
@@ -171,7 +172,7 @@ def preprocess_text_file(in_path, out_path, theme, scale):
         "CUI_SCALE_INV":             stringize(1.0 / scale),
     }
 
-    with open(in_path, "r") as in_file, open(out_path, "w") as out_file:
+    with open(in_path, "r", encoding="utf-8") as in_file, open(out_path, "w", encoding="utf-8") as out_file:
         for i, line in enumerate(in_file):
             for macro_name, macro in macros.items():
                 query = macro_name + r"\(([\w\s\-.,/]*)\)"
@@ -217,7 +218,7 @@ def glitch(image_path, glitch_path, scale):
         image.save(image_path)
 
 def install_fonts(fonts):
-    proc = Popen("inkscape --actions=\"user-data-directory;\"", stdout = PIPE)
+    proc = Popen(f"\"{INKSCAPE_BIN}\" --actions=\"user-data-directory;\"", stdout = PIPE)
     stdout, _ = proc.communicate()
     proc.wait()
 
@@ -232,7 +233,7 @@ def install_fonts(fonts):
             break
 
 def batch_render(images, scale):
-    proc = Popen("inkscape --shell", stdin = PIPE, stdout = PIPE, stderr = STDOUT, shell = True)
+    proc = Popen(f"\"{INKSCAPE_BIN}\" --shell", stdin = PIPE, stdout = PIPE, stderr = STDOUT, shell = True)
 
     cmd = ""
 
